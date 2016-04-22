@@ -20,12 +20,12 @@ class __TwigTemplate_aa6ae2f5e3bafa5f21d494c29bf14d68a7207c61080e74452df95dc2b8f
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_c066fff87165df6098f4521c020440c71bd5ba807cbf0588ea51b8f553f5b2cb = $this->env->getExtension("native_profiler");
-        $__internal_c066fff87165df6098f4521c020440c71bd5ba807cbf0588ea51b8f553f5b2cb->enter($__internal_c066fff87165df6098f4521c020440c71bd5ba807cbf0588ea51b8f553f5b2cb_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "HamsterHubBundle:Default:index.html.twig"));
+        $__internal_d03bb71182cd0f6f2fcee91f2395c5d52c16d73dc4b615b8a4b872ab8e2585df = $this->env->getExtension("native_profiler");
+        $__internal_d03bb71182cd0f6f2fcee91f2395c5d52c16d73dc4b615b8a4b872ab8e2585df->enter($__internal_d03bb71182cd0f6f2fcee91f2395c5d52c16d73dc4b615b8a4b872ab8e2585df_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "HamsterHubBundle:Default:index.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_c066fff87165df6098f4521c020440c71bd5ba807cbf0588ea51b8f553f5b2cb->leave($__internal_c066fff87165df6098f4521c020440c71bd5ba807cbf0588ea51b8f553f5b2cb_prof);
+        $__internal_d03bb71182cd0f6f2fcee91f2395c5d52c16d73dc4b615b8a4b872ab8e2585df->leave($__internal_d03bb71182cd0f6f2fcee91f2395c5d52c16d73dc4b615b8a4b872ab8e2585df_prof);
 
     }
 
