@@ -10,6 +10,7 @@ class __TwigTemplate_aa6ae2f5e3bafa5f21d494c29bf14d68a7207c61080e74452df95dc2b8f
         // line 1
         $this->parent = $this->loadTemplate("HamsterHubBundle:Base:index.html.twig", "HamsterHubBundle:Default:index.html.twig", 1);
         $this->blocks = array(
+            'container' => array($this, 'block_container'),
         );
     }
 
@@ -20,12 +21,26 @@ class __TwigTemplate_aa6ae2f5e3bafa5f21d494c29bf14d68a7207c61080e74452df95dc2b8f
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_d03bb71182cd0f6f2fcee91f2395c5d52c16d73dc4b615b8a4b872ab8e2585df = $this->env->getExtension("native_profiler");
-        $__internal_d03bb71182cd0f6f2fcee91f2395c5d52c16d73dc4b615b8a4b872ab8e2585df->enter($__internal_d03bb71182cd0f6f2fcee91f2395c5d52c16d73dc4b615b8a4b872ab8e2585df_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "HamsterHubBundle:Default:index.html.twig"));
+        $__internal_29f19bd5a564957995378b8f13cd8a68ac3ba18c4cefabe4d757a8a8bf55f09a = $this->env->getExtension("native_profiler");
+        $__internal_29f19bd5a564957995378b8f13cd8a68ac3ba18c4cefabe4d757a8a8bf55f09a->enter($__internal_29f19bd5a564957995378b8f13cd8a68ac3ba18c4cefabe4d757a8a8bf55f09a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "HamsterHubBundle:Default:index.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_d03bb71182cd0f6f2fcee91f2395c5d52c16d73dc4b615b8a4b872ab8e2585df->leave($__internal_d03bb71182cd0f6f2fcee91f2395c5d52c16d73dc4b615b8a4b872ab8e2585df_prof);
+        $__internal_29f19bd5a564957995378b8f13cd8a68ac3ba18c4cefabe4d757a8a8bf55f09a->leave($__internal_29f19bd5a564957995378b8f13cd8a68ac3ba18c4cefabe4d757a8a8bf55f09a_prof);
+
+    }
+
+    // line 3
+    public function block_container($context, array $blocks = array())
+    {
+        $__internal_b6dc9d626adba481cc1f413d968c7652b117ca04eed9ab451cc532c178d61660 = $this->env->getExtension("native_profiler");
+        $__internal_b6dc9d626adba481cc1f413d968c7652b117ca04eed9ab451cc532c178d61660->enter($__internal_b6dc9d626adba481cc1f413d968c7652b117ca04eed9ab451cc532c178d61660_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "container"));
+
+        // line 4
+        echo "  Autre chose dedans
+";
+        
+        $__internal_b6dc9d626adba481cc1f413d968c7652b117ca04eed9ab451cc532c178d61660->leave($__internal_b6dc9d626adba481cc1f413d968c7652b117ca04eed9ab451cc532c178d61660_prof);
 
     }
 
@@ -41,8 +56,12 @@ class __TwigTemplate_aa6ae2f5e3bafa5f21d494c29bf14d68a7207c61080e74452df95dc2b8f
 
     public function getDebugInfo()
     {
-        return array (  11 => 1,);
+        return array (  40 => 4,  34 => 3,  11 => 1,);
     }
 }
 /* {% extends 'HamsterHubBundle:Base:index.html.twig' %}*/
+/* */
+/* {% block container %}*/
+/*   Autre chose dedans*/
+/* {% endblock %}*/
 /* */
