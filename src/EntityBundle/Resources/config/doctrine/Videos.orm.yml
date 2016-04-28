@@ -1,0 +1,24 @@
+EntityBundle\Entity\Videos:
+    type: entity
+    table: null
+    repositoryClass: EntityBundle\Repository\VideosRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        videos:
+            type: string
+            length: 255
+        date:
+            type: date
+    oneToOne:
+      user:
+        targetEntity: User
+        inversedBy: id
+        joinColumn:
+          name: user_id
+          referencedColumnName: id
+    lifecycleCallbacks: {  }
