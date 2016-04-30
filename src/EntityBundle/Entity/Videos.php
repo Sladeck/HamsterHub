@@ -17,7 +17,7 @@ class Videos
     /**
      * @var string
      */
-    private $videos;
+    private $url;
 
     /**
      * @var \DateTime
@@ -41,9 +41,9 @@ class Videos
      * @param string $videos
      * @return Videos
      */
-    public function setVideos($videos)
+    public function setUrl($url)
     {
-        $this->videos = $videos;
+        $this->url = $url;
 
         return $this;
     }
@@ -53,9 +53,9 @@ class Videos
      *
      * @return string
      */
-    public function getVideos()
+    public function getUrl()
     {
-        return $this->videos;
+        return $this->url;
     }
 
     /**
@@ -80,7 +80,9 @@ class Videos
     {
         return $this->date;
     }
-
+    /**
+     * @var \EntityBundle\Entity\User
+     */
     private $user;
 
 
@@ -88,7 +90,7 @@ class Videos
      * Set user
      *
      * @param \EntityBundle\Entity\User $user
-     * @return PhotosProfile
+     * @return Videos
      */
     public function setUser(\EntityBundle\Entity\User $user = null)
     {

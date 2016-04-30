@@ -1,5 +1,9 @@
 {% extends 'HamsterHubBundle:Base:index.html.twig' %}
 
 {% block container %}
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/1wIHQZiOCmo" frameborder="0" allowfullscreen></iframe>
+{% for videos in url %}
+  {{ videos.user }}<br>
+  <iframe width="560" height="315" src="{{ videos.url }}" frameborder="0" allowfullscreen></iframe><br>
+
+  {% endfor %}
 {% endblock %}

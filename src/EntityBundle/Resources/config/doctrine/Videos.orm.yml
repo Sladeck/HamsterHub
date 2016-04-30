@@ -9,12 +9,12 @@ EntityBundle\Entity\Videos:
             generator:
                 strategy: AUTO
     fields:
-        videos:
+        url:
             type: string
             length: 255
         date:
             type: date
-    oneToOne:
+    manyToOne:
       user:
         targetEntity: User
         inversedBy: id

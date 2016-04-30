@@ -15,8 +15,8 @@ class __TwigTemplate_6a1a1d63b802ca2bb50f6497a90be5b312d32070359b2de285c5a2b1b67
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_3558e8bb7a9b5cf31c3272647571c95865e233c97ef6c13bdc6210843712bb63 = $this->env->getExtension("native_profiler");
-        $__internal_3558e8bb7a9b5cf31c3272647571c95865e233c97ef6c13bdc6210843712bb63->enter($__internal_3558e8bb7a9b5cf31c3272647571c95865e233c97ef6c13bdc6210843712bb63_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "HamsterHubBundle:Base:menu.html.twig"));
+        $__internal_a38a1f0371e77868287161f5baef0261b15920ef2768be2f49037dff06d127a8 = $this->env->getExtension("native_profiler");
+        $__internal_a38a1f0371e77868287161f5baef0261b15920ef2768be2f49037dff06d127a8->enter($__internal_a38a1f0371e77868287161f5baef0261b15920ef2768be2f49037dff06d127a8_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "HamsterHubBundle:Base:menu.html.twig"));
 
         // line 1
         echo "<nav id='cssmenu'>
@@ -42,7 +42,7 @@ class __TwigTemplate_6a1a1d63b802ca2bb50f6497a90be5b312d32070359b2de285c5a2b1b67
 </nav>
 ";
         
-        $__internal_3558e8bb7a9b5cf31c3272647571c95865e233c97ef6c13bdc6210843712bb63->leave($__internal_3558e8bb7a9b5cf31c3272647571c95865e233c97ef6c13bdc6210843712bb63_prof);
+        $__internal_a38a1f0371e77868287161f5baef0261b15920ef2768be2f49037dff06d127a8->leave($__internal_a38a1f0371e77868287161f5baef0261b15920ef2768be2f49037dff06d127a8_prof);
 
     }
 

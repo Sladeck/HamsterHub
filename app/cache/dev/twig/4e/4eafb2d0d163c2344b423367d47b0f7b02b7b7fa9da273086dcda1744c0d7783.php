@@ -21,26 +21,41 @@ class __TwigTemplate_aa6ae2f5e3bafa5f21d494c29bf14d68a7207c61080e74452df95dc2b8f
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_9544157776459b043bccef3f404e650c38e3a10184d9d656e3bd435ac145ef7d = $this->env->getExtension("native_profiler");
-        $__internal_9544157776459b043bccef3f404e650c38e3a10184d9d656e3bd435ac145ef7d->enter($__internal_9544157776459b043bccef3f404e650c38e3a10184d9d656e3bd435ac145ef7d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "HamsterHubBundle:Default:index.html.twig"));
+        $__internal_89f90989c7e7e944756c6e1f7dd59a4e150cb5ad59b17ca887395e125ff68686 = $this->env->getExtension("native_profiler");
+        $__internal_89f90989c7e7e944756c6e1f7dd59a4e150cb5ad59b17ca887395e125ff68686->enter($__internal_89f90989c7e7e944756c6e1f7dd59a4e150cb5ad59b17ca887395e125ff68686_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "HamsterHubBundle:Default:index.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_9544157776459b043bccef3f404e650c38e3a10184d9d656e3bd435ac145ef7d->leave($__internal_9544157776459b043bccef3f404e650c38e3a10184d9d656e3bd435ac145ef7d_prof);
+        $__internal_89f90989c7e7e944756c6e1f7dd59a4e150cb5ad59b17ca887395e125ff68686->leave($__internal_89f90989c7e7e944756c6e1f7dd59a4e150cb5ad59b17ca887395e125ff68686_prof);
 
     }
 
     // line 3
     public function block_container($context, array $blocks = array())
     {
-        $__internal_edb9b5c4677b475e4cec5da3d8e1eb4b3941b00bd43941cb65afdc35e012816c = $this->env->getExtension("native_profiler");
-        $__internal_edb9b5c4677b475e4cec5da3d8e1eb4b3941b00bd43941cb65afdc35e012816c->enter($__internal_edb9b5c4677b475e4cec5da3d8e1eb4b3941b00bd43941cb65afdc35e012816c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "container"));
+        $__internal_4dcaaf275ef7cb5b682e4070dd3494725e1fd5e81bb6271aa9c84a57c4942b8e = $this->env->getExtension("native_profiler");
+        $__internal_4dcaaf275ef7cb5b682e4070dd3494725e1fd5e81bb6271aa9c84a57c4942b8e->enter($__internal_4dcaaf275ef7cb5b682e4070dd3494725e1fd5e81bb6271aa9c84a57c4942b8e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "container"));
 
         // line 4
-        echo "  <iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/1wIHQZiOCmo\" frameborder=\"0\" allowfullscreen></iframe>
-";
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable((isset($context["url"]) ? $context["url"] : $this->getContext($context, "url")));
+        foreach ($context['_seq'] as $context["_key"] => $context["videos"]) {
+            // line 5
+            echo "  ";
+            echo twig_escape_filter($this->env, $this->getAttribute($context["videos"], "user", array()), "html", null, true);
+            echo "<br>
+  <iframe width=\"560\" height=\"315\" src=\"";
+            // line 6
+            echo twig_escape_filter($this->env, $this->getAttribute($context["videos"], "url", array()), "html", null, true);
+            echo "\" frameborder=\"0\" allowfullscreen></iframe><br>
+
+  ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['videos'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
         
-        $__internal_edb9b5c4677b475e4cec5da3d8e1eb4b3941b00bd43941cb65afdc35e012816c->leave($__internal_edb9b5c4677b475e4cec5da3d8e1eb4b3941b00bd43941cb65afdc35e012816c_prof);
+        $__internal_4dcaaf275ef7cb5b682e4070dd3494725e1fd5e81bb6271aa9c84a57c4942b8e->leave($__internal_4dcaaf275ef7cb5b682e4070dd3494725e1fd5e81bb6271aa9c84a57c4942b8e_prof);
 
     }
 
@@ -56,12 +71,16 @@ class __TwigTemplate_aa6ae2f5e3bafa5f21d494c29bf14d68a7207c61080e74452df95dc2b8f
 
     public function getDebugInfo()
     {
-        return array (  40 => 4,  34 => 3,  11 => 1,);
+        return array (  49 => 6,  44 => 5,  40 => 4,  34 => 3,  11 => 1,);
     }
 }
 /* {% extends 'HamsterHubBundle:Base:index.html.twig' %}*/
 /* */
 /* {% block container %}*/
-/*   <iframe width="560" height="315" src="https://www.youtube.com/embed/1wIHQZiOCmo" frameborder="0" allowfullscreen></iframe>*/
+/* {% for videos in url %}*/
+/*   {{ videos.user }}<br>*/
+/*   <iframe width="560" height="315" src="{{ videos.url }}" frameborder="0" allowfullscreen></iframe><br>*/
+/* */
+/*   {% endfor %}*/
 /* {% endblock %}*/
 /* */
