@@ -2,8 +2,10 @@
 <html>
     <head>
         <meta charset="UTF-8" />
+        <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     </head>
     <body>
+      {% include 'HamsterHubBundle:Base:menu.html.twig' %}
         <div>
           toto
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}

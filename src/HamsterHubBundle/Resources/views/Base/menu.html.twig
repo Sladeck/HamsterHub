@@ -1,6 +1,6 @@
 <nav id='cssmenu'>
     <ul>
-       <li class='active'><a href='#'><span>Accueil</span></a></li>
+       <li class='active'><a href='/'><span>Accueil</span></a></li>
        {% if ((is_granted("IS_AUTHENTICATED_REMEMBERED")) or (is_granted("IS_AUTHENTICATED_FULLY"))) %}
           <li><a href='/profile'><span>{{app.user.username}}</span></a></li>
           <li class='last'><a href='/logout'><span>Déconnexion</span></a></li>
