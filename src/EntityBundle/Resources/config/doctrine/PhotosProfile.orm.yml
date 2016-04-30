@@ -1,0 +1,23 @@
+EntityBundle\Entity\PhotosProfile:
+    type: entity
+    table: null
+    repositoryClass: EntityBundle\Repository\PhotosProfileRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        photos:
+            type: string
+            length: 255
+            nullable: true
+    oneToOne:
+        user:
+          targetEntity: User
+          inversedBy: id
+          joinColumn:
+            name: user_id
+            referencedColumnName: id
+    lifecycleCallbacks: {  }

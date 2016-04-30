@@ -1,0 +1,8 @@
+hamster_hub_homepage:
+    path:     /
+    defaults: { _controller: HamsterHubBundle:Default:index }
+
+hamster_hub_home:
+    path:     /home
+    defaults: { _controller: HamsterHubBundle:Home:index }
+

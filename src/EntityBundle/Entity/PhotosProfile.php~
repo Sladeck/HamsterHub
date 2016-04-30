@@ -1,0 +1,55 @@
+<?php
+
+namespace EntityBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * PhotosProfile
+ */
+class PhotosProfile
+{
+    /**
+     * @var int
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $photos;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set photos
+     *
+     * @param string $photos
+     * @return PhotosProfile
+     */
+    public function setPhotos($photos)
+    {
+        $this->photos = $photos;
+
+        return $this;
+    }
+
+    /**
+     * Get photos
+     *
+     * @return string 
+     */
+    public function getPhotos()
+    {
+        return $this->photos;
+    }
+}
