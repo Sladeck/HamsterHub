@@ -1,1 +1,9 @@
 {% extends 'HamsterHubBundle:Base:index.html.twig' %}
+
+{% block container %}
+{% for videos in url %}
+  {{ videos.user }}<br>
+  <iframe width="560" height="315" src="{{ videos.url }}" frameborder="0" allowfullscreen></iframe><br>
+
+  {% endfor %}
+{% endblock %}

@@ -114,11 +114,6 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'HamsterHubBundle\\Controller\\DefaultController::indexAction',  '_route' => 'hamster_hub_homepage',);
         }
 
-        // Account
-        if ($pathinfo === '/Account') {
-            return array (  '-controller' => 'HamsterHubBundle:Account:index',  '_route' => 'Account',);
-        }
-
         if (0 === strpos($pathinfo, '/log')) {
             if (0 === strpos($pathinfo, '/login')) {
                 // fos_user_security_login

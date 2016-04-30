@@ -1,7 +1,3 @@
 hamster_hub_homepage:
     path:     /
     defaults: { _controller: HamsterHubBundle:Default:index }
-
-Account:
-  path: /Account
-  defaults: { -controller: HamsterHubBundle:Account:index }
