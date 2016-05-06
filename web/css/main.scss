@@ -109,6 +109,10 @@ table {
   background: #ffffff;
   opacity: .5;
 }
+
+li a{
+	cursor: pointer;
+}
 #cssmenu ul li a:before {
   content: "";
   display: block;
@@ -164,4 +168,59 @@ table {
   #cssmenu ul li a:before {
     display: none;
   }
+}
+
+/************************** CSS MAIN **************************************/
+
+/**************************** MODAL ***************************************/
+.uploadPopUp, .loginPopUp, .registerPopUp {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+		text-align: center;
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 8px solid #888;
+    width: 15%; /* Could be more or less, depending on screen size */
+		z-index: 9999;
+}
+
+.modal-content input{
+	height: 1.5vw;
+	font-size: auto;
+	width: 80%;
+	max-width: border-box;
+}
+
+.modal-content input[name=name]{
+	text-transform: uppercase;
+}
+
+.modal-content input[type=submit]{
+	cursor: pointer;
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+		margin-top: -5%;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }

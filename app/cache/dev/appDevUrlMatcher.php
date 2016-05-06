@@ -114,6 +114,31 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'HamsterHubBundle\\Controller\\DefaultController::indexAction',  '_route' => 'hamster_hub_homepage',);
         }
 
+        if (0 === strpos($pathinfo, '/video')) {
+            // video_upload
+            if ($pathinfo === '/video/upload') {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_video_upload;
+                }
+
+                return array (  '_controller' => 'HamsterHubBundle\\Controller\\VideoController::uploadAction',  '_route' => 'video_upload',);
+            }
+            not_video_upload:
+
+            // video_delete
+            if ($pathinfo === '/video/delete') {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_video_delete;
+                }
+
+                return array (  '_controller' => 'HamsterHubBundle\\Controller\\VideoController::deleteAction',  '_route' => 'video_delete',);
+            }
+            not_video_delete:
+
+        }
+
         if (0 === strpos($pathinfo, '/log')) {
             if (0 === strpos($pathinfo, '/login')) {
                 // fos_user_security_login

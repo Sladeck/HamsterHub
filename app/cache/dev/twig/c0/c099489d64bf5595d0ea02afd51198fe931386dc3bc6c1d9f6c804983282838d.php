@@ -15,13 +15,13 @@ class __TwigTemplate_5822eb7e7eb9815d63f1bf37aafb9186728e8f876c603fb36391aa84ba1
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_5c8feda9447a7246363aac6fbe5fff782a428cf014222cd7b419498293e706f2 = $this->env->getExtension("native_profiler");
-        $__internal_5c8feda9447a7246363aac6fbe5fff782a428cf014222cd7b419498293e706f2->enter($__internal_5c8feda9447a7246363aac6fbe5fff782a428cf014222cd7b419498293e706f2_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@HamsterHub/Base/menu.html.twig"));
+        $__internal_6a161e61ec74c51a846ea4761e661dd9a13e50216783df1f0eb6616778ece81f = $this->env->getExtension("native_profiler");
+        $__internal_6a161e61ec74c51a846ea4761e661dd9a13e50216783df1f0eb6616778ece81f->enter($__internal_6a161e61ec74c51a846ea4761e661dd9a13e50216783df1f0eb6616778ece81f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@HamsterHub/Base/menu.html.twig"));
 
         // line 1
         echo "<nav id='cssmenu'>
     <ul>
-       <li class='active'><a href='#'><span>Accueil</span></a></li>
+       <li class='active'><a href='/'><span>Accueil</span></a></li>
        ";
         // line 4
         if (($this->env->getExtension('security')->isGranted("IS_AUTHENTICATED_REMEMBERED") || $this->env->getExtension('security')->isGranted("IS_AUTHENTICATED_FULLY"))) {
@@ -42,7 +42,7 @@ class __TwigTemplate_5822eb7e7eb9815d63f1bf37aafb9186728e8f876c603fb36391aa84ba1
 </nav>
 ";
         
-        $__internal_5c8feda9447a7246363aac6fbe5fff782a428cf014222cd7b419498293e706f2->leave($__internal_5c8feda9447a7246363aac6fbe5fff782a428cf014222cd7b419498293e706f2_prof);
+        $__internal_6a161e61ec74c51a846ea4761e661dd9a13e50216783df1f0eb6616778ece81f->leave($__internal_6a161e61ec74c51a846ea4761e661dd9a13e50216783df1f0eb6616778ece81f_prof);
 
     }
 
@@ -63,7 +63,7 @@ class __TwigTemplate_5822eb7e7eb9815d63f1bf37aafb9186728e8f876c603fb36391aa84ba1
 }
 /* <nav id='cssmenu'>*/
 /*     <ul>*/
-/*        <li class='active'><a href='#'><span>Accueil</span></a></li>*/
+/*        <li class='active'><a href='/'><span>Accueil</span></a></li>*/
 /*        {% if ((is_granted("IS_AUTHENTICATED_REMEMBERED")) or (is_granted("IS_AUTHENTICATED_FULLY"))) %}*/
 /*           <li><a href='/profile'><span>{{app.user.username}}</span></a></li>*/
 /*           <li class='last'><a href='/logout'><span>Déconnexion</span></a></li>*/

@@ -1,9 +1,48 @@
 {% extends 'HamsterHubBundle:Base:index.html.twig' %}
 
 {% block container %}
-{% for videos in url %}
-  {{ videos.user }}<br>
-  <iframe width="560" height="315" src="{{ videos.url }}" frameborder="0" allowfullscreen></iframe><br>
+<div class="registerPopUp">
+  <div class="modal-content">
+    <span class="close">x</span>
+    {% render url('fos_user_registration_register') %}
+  </div>
+</div>
+<div class="loginPopUp">
+  <div class="modal-content">
+    <span class="close">x</span>
+    {% render url('fos_user_security_login') %}
+  </div>
+</div>
 
-  {% endfor %}
+{% for liens in videos %}
+
+  <div id="{{ liens.id }}">
+    <h1>{{ liens.name }}</h1>
+    de {{ liens.user }} le {{ liens.date|date("d/m/Y") }}<br>
+    <iframe width="560" height="315" src="{{ liens.url }}" frameborder="0" allowfullscreen></iframe><br>
+
+    {% if ((is_granted("IS_AUTHENTICATED_REMEMBERED")) or (is_granted("IS_AUTHENTICATED_FULLY"))) %}
+      {% if (is_granted('ROLE_ADMIN')) or (( liens.user ) == ( app.user.username )) %}
+        <form id="delete" method="post">
+          <input type="hidden" name="id" value="{{ liens.id }}">
+          <input type="submit" name="delete" value="Supprimer">
+        </form>
+      {% endif %}
+    {% endif %}
+  </div><br><br>
+
+{% endfor %}
+
+{% if ((is_granted("IS_AUTHENTICATED_REMEMBERED")) or (is_granted("IS_AUTHENTICATED_FULLY"))) %}
+  <div class="uploadPopUp">
+    <form id="upload" method="post" class="modal-content">
+      <span class="close">x</span>
+        <h1>Mettre un post en ligne : </h1><br>
+        <input type="text" name="name" placeholder="Titre"><br><br>
+        <input type="text" name="url" placeholder="Url"><br><br>
+        <input type="submit" name="formVideo" value="OK">
+    </form>
+  </div>
+{% endif %}
+
 {% endblock %}

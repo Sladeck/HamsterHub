@@ -24,6 +24,11 @@ class Videos
      */
     private $date;
 
+    /**
+    * @var string
+    */
+    private $name;
+
 
     /**
      * Get id
@@ -80,6 +85,32 @@ class Videos
     {
         return $this->date;
     }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Videos
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+
+
     /**
      * @var \EntityBundle\Entity\User
      */

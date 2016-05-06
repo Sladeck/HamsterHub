@@ -3,10 +3,12 @@
        <li class='active'><a href='/'><span>Accueil</span></a></li>
        {% if ((is_granted("IS_AUTHENTICATED_REMEMBERED")) or (is_granted("IS_AUTHENTICATED_FULLY"))) %}
           <li><a href='/profile'><span>{{app.user.username}}</span></a></li>
-          <li class='last'><a href='/logout'><span>Déconnexion</span></a></li>
+          <li><a><span id="postVids">Poster une vidéo</span></a></li>
+          <li><a href='/logout'><span>Déconnexion</span></a></li>
        {% else %}
-          <li><a href='/login'><span>Connexion</span></a></li>
-          <li class='last'><a href='/register'><span>Inscription</span></a></li>
+          <li><a><span id="logIn">Connexion</span></a></li>
+          <li><a><span id="register">Inscription</span></a></li>
        {% endif %}
+       <li class="last"><a><span><input type="text" name="search" placeholder="Recherche"></span></a></li>
     </ul>
 </nav>

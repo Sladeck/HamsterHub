@@ -10,15 +10,14 @@ class __TwigTemplate_586452ee41da97cd68212edb92aab537a0127a96255fd825650d29cafee
         $this->parent = false;
 
         $this->blocks = array(
-            'h1' => array($this, 'block_h1'),
             'container' => array($this, 'block_container'),
         );
     }
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_3816e52b8a3b3575900b151724b39fdaec691e6c580f8f76162cebf96ae04b86 = $this->env->getExtension("native_profiler");
-        $__internal_3816e52b8a3b3575900b151724b39fdaec691e6c580f8f76162cebf96ae04b86->enter($__internal_3816e52b8a3b3575900b151724b39fdaec691e6c580f8f76162cebf96ae04b86_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "HamsterHubBundle:Base:index.html.twig"));
+        $__internal_fd1fcbe384077e772a39420dba07489a72ef4a07904aeaeadef04d657e24a16a = $this->env->getExtension("native_profiler");
+        $__internal_fd1fcbe384077e772a39420dba07489a72ef4a07904aeaeadef04d657e24a16a->enter($__internal_fd1fcbe384077e772a39420dba07489a72ef4a07904aeaeadef04d657e24a16a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "HamsterHubBundle:Base:index.html.twig"));
 
         // line 1
         $this->loadTemplate("HamsterHubBundle:Base:head.html.twig", "HamsterHubBundle:Base:index.html.twig", 1)->display($context);
@@ -27,48 +26,32 @@ class __TwigTemplate_586452ee41da97cd68212edb92aab537a0127a96255fd825650d29cafee
         // line 3
         echo "
 <body>
-  <h1>";
-        // line 5
-        $this->displayBlock('h1', $context, $blocks);
-        echo "</h1>
   <div class=\"container\">
     ";
-        // line 7
+        // line 6
         $this->displayBlock('container', $context, $blocks);
-        // line 10
+        // line 9
         echo "  </div>
 </body>
 ";
-        // line 12
-        $this->loadTemplate("HamsterHubBundle:Base:footer.html.twig", "HamsterHubBundle:Base:index.html.twig", 12)->display($context);
+        // line 11
+        $this->loadTemplate("HamsterHubBundle:Base:footer.html.twig", "HamsterHubBundle:Base:index.html.twig", 11)->display($context);
         
-        $__internal_3816e52b8a3b3575900b151724b39fdaec691e6c580f8f76162cebf96ae04b86->leave($__internal_3816e52b8a3b3575900b151724b39fdaec691e6c580f8f76162cebf96ae04b86_prof);
+        $__internal_fd1fcbe384077e772a39420dba07489a72ef4a07904aeaeadef04d657e24a16a->leave($__internal_fd1fcbe384077e772a39420dba07489a72ef4a07904aeaeadef04d657e24a16a_prof);
 
     }
 
-    // line 5
-    public function block_h1($context, array $blocks = array())
-    {
-        $__internal_8117479db969a6afdf33a2b069784a2db53a96b4ebeacf19410a20a7439f406b = $this->env->getExtension("native_profiler");
-        $__internal_8117479db969a6afdf33a2b069784a2db53a96b4ebeacf19410a20a7439f406b->enter($__internal_8117479db969a6afdf33a2b069784a2db53a96b4ebeacf19410a20a7439f406b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "h1"));
-
-        echo "Accueil";
-        
-        $__internal_8117479db969a6afdf33a2b069784a2db53a96b4ebeacf19410a20a7439f406b->leave($__internal_8117479db969a6afdf33a2b069784a2db53a96b4ebeacf19410a20a7439f406b_prof);
-
-    }
-
-    // line 7
+    // line 6
     public function block_container($context, array $blocks = array())
     {
-        $__internal_6be589fab111b64826c02968a3eecc582c39f9d52b0afb338d6cc84feb4da572 = $this->env->getExtension("native_profiler");
-        $__internal_6be589fab111b64826c02968a3eecc582c39f9d52b0afb338d6cc84feb4da572->enter($__internal_6be589fab111b64826c02968a3eecc582c39f9d52b0afb338d6cc84feb4da572_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "container"));
+        $__internal_b39a5c39ed2b9b79cea8d575cac373d485ce987be83af1b8327d4873b6e7a5c0 = $this->env->getExtension("native_profiler");
+        $__internal_b39a5c39ed2b9b79cea8d575cac373d485ce987be83af1b8327d4873b6e7a5c0->enter($__internal_b39a5c39ed2b9b79cea8d575cac373d485ce987be83af1b8327d4873b6e7a5c0_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "container"));
 
-        // line 8
+        // line 7
         echo "      <span>Texte par défaut</span>
     ";
         
-        $__internal_6be589fab111b64826c02968a3eecc582c39f9d52b0afb338d6cc84feb4da572->leave($__internal_6be589fab111b64826c02968a3eecc582c39f9d52b0afb338d6cc84feb4da572_prof);
+        $__internal_b39a5c39ed2b9b79cea8d575cac373d485ce987be83af1b8327d4873b6e7a5c0->leave($__internal_b39a5c39ed2b9b79cea8d575cac373d485ce987be83af1b8327d4873b6e7a5c0_prof);
 
     }
 
@@ -84,14 +67,13 @@ class __TwigTemplate_586452ee41da97cd68212edb92aab537a0127a96255fd825650d29cafee
 
     public function getDebugInfo()
     {
-        return array (  68 => 8,  62 => 7,  50 => 5,  43 => 12,  39 => 10,  37 => 7,  32 => 5,  28 => 3,  26 => 2,  24 => 1,);
+        return array (  51 => 7,  45 => 6,  38 => 11,  34 => 9,  32 => 6,  27 => 3,  25 => 2,  23 => 1,);
     }
 }
 /* {% include 'HamsterHubBundle:Base:head.html.twig' %}*/
 /* {% include 'HamsterHubBundle:Base:menu.html.twig' %}*/
 /* */
 /* <body>*/
-/*   <h1>{% block h1 %}Accueil{% endblock %}</h1>*/
 /*   <div class="container">*/
 /*     {% block container %}*/
 /*       <span>Texte par défaut</span>*/
