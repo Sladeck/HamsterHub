@@ -3,5 +3,5 @@ EntityBundle\Entity\Thread:
     table: null
     id:
         id:
-            type: string
+            type: integer
     lifecycleCallbacks: {  }

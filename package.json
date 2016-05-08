@@ -1,0 +1,22 @@
+{
+  "name": "hamsterhub",
+  "version": "1.0.0",
+  "description": "HamsterHub ==========",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sladeck/HamsterHub.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sladeck/HamsterHub/issues"
+  },
+  "homepage": "https://github.com/Sladeck/HamsterHub#readme",
+  "devDependencies": {
+    "bower": "^1.7.9"
+  }
+}

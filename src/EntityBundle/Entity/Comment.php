@@ -3,54 +3,56 @@
 namespace EntityBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use FOS\CommentBundle\Entity\Comment as BaseComment;
+use FOS\CommentBundle\Model\SignedCommentInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Comment
  */
-class Comment
+class Comment extends BaseComment implements SignedCommentInterface
 {
 
-    /**
-     * @var integer
-     */
-    private $id;
+  /**
+       * @ORM\Id
+       * @ORM\Column(type="integer")
+       * @ORM\GeneratedValue(strategy="AUTO")
+       */
+      protected $id;
 
-    /**
-     * @var \SG\siteBaseBundle\Entity\Thread
-     */
-    private $thread;
+      /**
+       * Thread of this comment
+       *
+       * @var Thread
+       * @ORM\ManyToOne(targetEntity="MyProject\MyBundle\Entity\Thread")
+       */
+      protected $thread;
 
-
-    /**
-     * Get id
+      /**
+     * Author of the comment
      *
-     * @return integer 
+     * @ORM\ManyToOne(targetEntity="MyProject\MyBundle\Entity\User")
+     * @var User
      */
-    public function getId()
+    protected $author;
+
+    public function setAuthor(UserInterface $author)
     {
-        return $this->id;
+        $this->author = $author;
     }
 
-    /**
-     * Set thread
-     *
-     * @param \SG\siteBaseBundle\Entity\Thread $thread
-     * @return Comment
-     */
-    public function setThread(\SG\siteBaseBundle\Entity\Thread $thread = null)
+    public function getAuthor()
     {
-        $this->thread = $thread;
-
-        return $this;
+        return $this->author;
     }
 
-    /**
-     * Get thread
-     *
-     * @return \SG\siteBaseBundle\Entity\Thread 
-     */
-    public function getThread()
+    public function getAuthorName()
     {
-        return $this->thread;
+        if (null === $this->getAuthor()) {
+            return 'Anonymous';
+        }
+
+        return $this->getAuthor()->getUsername();
     }
+
 }

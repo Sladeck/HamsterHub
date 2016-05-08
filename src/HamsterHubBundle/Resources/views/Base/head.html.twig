@@ -6,10 +6,11 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>{% block title %}Accueil{% endblock %}</title>
       <link rel="stylesheet" href="{{ asset('css/main.css') }}">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+      {% block javascripts %}
+      <script src="{{ asset('assets/vendor/jquery/dist/jquery.min.js') }}"></script>
+      {% endblock %}
       <script src="{{ asset("assets/upload.js") }}"></script>
       <script src="{{ asset("assets/modales.js") }}"></script>
-      {% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': 'foo'} %}
 
       </script>
     </head>

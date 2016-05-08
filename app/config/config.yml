@@ -88,4 +88,4 @@ assetic:
     use_controller: '%kernel.debug%'
     filters:
         cssrewrite: ~
-    bundles: [ "FOSCommentBundle" ]  
+    bundles: [ "FOSCommentBundle" ]

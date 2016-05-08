@@ -3,39 +3,20 @@
 namespace EntityBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use FOS\CommentBundle\Entity\Thread as BaseThread;
 
 /**
  * Thread
  */
-class Thread
+class Thread extends BaseThread
 {
 
-    /**
-     * @var string
-     */
-    private $id;
-
-
-    /**
-     * Set id
+  /**
+     * @var string $id
      *
-     * @param string $id
-     * @return Thread
+     * @ORM\Id
+     * @ORM\Column(type="string")
      */
-    public function setId($id)
-    {
-        $this->id = $id;
+    protected $id;
 
-        return $this;
-    }
-
-    /**
-     * Get id
-     *
-     * @return string 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 }
