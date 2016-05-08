@@ -1,0 +1,13 @@
+<?php
+
+namespace EntityBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Comment
+ */
+class Comment
+{
+
+}

@@ -75,3 +75,17 @@ fos_user:
     registration:
         form:
             type: UserBundle\Form\RegisterType
+
+fos_comment:
+    db_driver: orm
+    class:
+        model:
+            comment: EntityBundle\Entity\Comment
+            thread: EntityBundle\Entity\Thread
+
+assetic:
+    debug:          '%kernel.debug%'
+    use_controller: '%kernel.debug%'
+    filters:
+        cssrewrite: ~
+    bundles: [ "FOSCommentBundle" ]  
