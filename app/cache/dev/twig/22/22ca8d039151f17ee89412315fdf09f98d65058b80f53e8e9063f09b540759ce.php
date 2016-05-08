@@ -21,20 +21,20 @@ class __TwigTemplate_bb2b19b5c8aac8bb32a9ded87b56adb5a537c06ef5c70a9287e0a05c2f8
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_8c19b2dfc3c1566b9eae67447422e99ed190bb2d86511c4fa55153f1e6ea75ae = $this->env->getExtension("native_profiler");
-        $__internal_8c19b2dfc3c1566b9eae67447422e99ed190bb2d86511c4fa55153f1e6ea75ae->enter($__internal_8c19b2dfc3c1566b9eae67447422e99ed190bb2d86511c4fa55153f1e6ea75ae_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@HamsterHub/Default/index.html.twig"));
+        $__internal_80289227dc142d86fa9fd7391d690de8347620b9b40865b231e3175804f7df4e = $this->env->getExtension("native_profiler");
+        $__internal_80289227dc142d86fa9fd7391d690de8347620b9b40865b231e3175804f7df4e->enter($__internal_80289227dc142d86fa9fd7391d690de8347620b9b40865b231e3175804f7df4e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@HamsterHub/Default/index.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_8c19b2dfc3c1566b9eae67447422e99ed190bb2d86511c4fa55153f1e6ea75ae->leave($__internal_8c19b2dfc3c1566b9eae67447422e99ed190bb2d86511c4fa55153f1e6ea75ae_prof);
+        $__internal_80289227dc142d86fa9fd7391d690de8347620b9b40865b231e3175804f7df4e->leave($__internal_80289227dc142d86fa9fd7391d690de8347620b9b40865b231e3175804f7df4e_prof);
 
     }
 
     // line 3
     public function block_container($context, array $blocks = array())
     {
-        $__internal_37c683db12a0df80427d1bcf48980a964ccc39fde4ecfb1850ec7003a514d6d6 = $this->env->getExtension("native_profiler");
-        $__internal_37c683db12a0df80427d1bcf48980a964ccc39fde4ecfb1850ec7003a514d6d6->enter($__internal_37c683db12a0df80427d1bcf48980a964ccc39fde4ecfb1850ec7003a514d6d6_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "container"));
+        $__internal_7f4d1ee63ab40dd2968238f678089ec035af1c9bf49930a5e4b2b2a6848e7d1a = $this->env->getExtension("native_profiler");
+        $__internal_7f4d1ee63ab40dd2968238f678089ec035af1c9bf49930a5e4b2b2a6848e7d1a->enter($__internal_7f4d1ee63ab40dd2968238f678089ec035af1c9bf49930a5e4b2b2a6848e7d1a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "container"));
 
         // line 4
         echo "
@@ -44,61 +44,74 @@ class __TwigTemplate_bb2b19b5c8aac8bb32a9ded87b56adb5a537c06ef5c70a9287e0a05c2f8
         $context['_seq'] = twig_ensure_traversable((isset($context["videos"]) ? $context["videos"] : $this->getContext($context, "videos")));
         foreach ($context['_seq'] as $context["_key"] => $context["liens"]) {
             // line 6
-            echo "  <div id=\"";
+            echo "
+  <div id=\"";
+            // line 7
             echo twig_escape_filter($this->env, $this->getAttribute($context["liens"], "id", array()), "html", null, true);
             echo "\">
     <h1>";
-            // line 7
+            // line 8
             echo twig_escape_filter($this->env, $this->getAttribute($context["liens"], "name", array()), "html", null, true);
             echo "</h1>
-    de ";
-            // line 8
+    de <a href=\"/myVideo/";
+            // line 9
             echo twig_escape_filter($this->env, $this->getAttribute($context["liens"], "user", array()), "html", null, true);
-            echo " le ";
+            echo "\">";
+            echo twig_escape_filter($this->env, $this->getAttribute($context["liens"], "user", array()), "html", null, true);
+            echo "</a> le ";
             echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["liens"], "date", array()), "d/m/Y"), "html", null, true);
             echo "<br>
-    <iframe width=\"560\" height=\"315\" src=\"";
-            // line 9
-            echo twig_escape_filter($this->env, $this->getAttribute($context["liens"], "url", array()), "html", null, true);
-            echo "\" frameborder=\"0\" allowfullscreen></iframe><br>
-    ";
+    <a href=\"/video/";
             // line 10
+            echo twig_escape_filter($this->env, $this->getAttribute($context["liens"], "id", array()), "html", null, true);
+            echo "\">
+      <figure>
+        <img src=\"";
+            // line 12
+            echo twig_escape_filter($this->env, $this->getAttribute($context["liens"], "thumbnail", array()), "html", null, true);
+            echo "\" alt=\"";
+            echo twig_escape_filter($this->env, $this->getAttribute($context["liens"], "name", array()), "html", null, true);
+            echo "\"><br>
+        <figcaption>";
+            // line 13
+            echo twig_escape_filter($this->env, $this->getAttribute($context["liens"], "description", array()), "html", null, true);
+            echo "</figcaption>
+      </figure>
+    </a>
+
+
+    ";
+            // line 18
             if (($this->env->getExtension('security')->isGranted("IS_AUTHENTICATED_REMEMBERED") || $this->env->getExtension('security')->isGranted("IS_AUTHENTICATED_FULLY"))) {
-                // line 11
+                // line 19
                 echo "      ";
                 if (($this->env->getExtension('security')->isGranted("ROLE_ADMIN") || ($this->getAttribute($context["liens"], "user", array()) == $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user", array()), "username", array())))) {
-                    // line 12
+                    // line 20
                     echo "        <form id=\"delete\" method=\"post\">
           <input type=\"hidden\" name=\"id\" value=\"";
-                    // line 13
+                    // line 21
                     echo twig_escape_filter($this->env, $this->getAttribute($context["liens"], "id", array()), "html", null, true);
                     echo "\">
           <input type=\"submit\" name=\"delete\" value=\"Supprimer\">
         </form>
       ";
                 }
-                // line 17
+                // line 25
                 echo "    ";
             }
-            // line 18
+            // line 26
             echo "  </div><br><br>
-  ";
+
+";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['liens'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 20
-        if (($this->env->getExtension('security')->isGranted("IS_AUTHENTICATED_REMEMBERED") || $this->env->getExtension('security')->isGranted("IS_AUTHENTICATED_FULLY"))) {
-            // line 21
-            echo "    <form id=\"upload\" method=\"post\">
-        <input type=\"text\" name=\"name\"> NAME<br>
-        <input type=\"text\" name=\"url\"> URL<br>
-        <input type=\"submit\" name=\"formVideo\" value=\"Upload\">
-    </form>
+        // line 29
+        echo "
 ";
-        }
         
-        $__internal_37c683db12a0df80427d1bcf48980a964ccc39fde4ecfb1850ec7003a514d6d6->leave($__internal_37c683db12a0df80427d1bcf48980a964ccc39fde4ecfb1850ec7003a514d6d6_prof);
+        $__internal_7f4d1ee63ab40dd2968238f678089ec035af1c9bf49930a5e4b2b2a6848e7d1a->leave($__internal_7f4d1ee63ab40dd2968238f678089ec035af1c9bf49930a5e4b2b2a6848e7d1a_prof);
 
     }
 
@@ -114,7 +127,7 @@ class __TwigTemplate_bb2b19b5c8aac8bb32a9ded87b56adb5a537c06ef5c70a9287e0a05c2f8
 
     public function getDebugInfo()
     {
-        return array (  93 => 21,  91 => 20,  84 => 18,  81 => 17,  74 => 13,  71 => 12,  68 => 11,  66 => 10,  62 => 9,  56 => 8,  52 => 7,  47 => 6,  43 => 5,  40 => 4,  34 => 3,  11 => 1,);
+        return array (  111 => 29,  103 => 26,  100 => 25,  93 => 21,  90 => 20,  87 => 19,  85 => 18,  77 => 13,  71 => 12,  66 => 10,  58 => 9,  54 => 8,  50 => 7,  47 => 6,  43 => 5,  40 => 4,  34 => 3,  11 => 1,);
     }
 }
 /* {% extends 'HamsterHubBundle:Base:index.html.twig' %}*/
@@ -122,10 +135,18 @@ class __TwigTemplate_bb2b19b5c8aac8bb32a9ded87b56adb5a537c06ef5c70a9287e0a05c2f8
 /* {% block container %}*/
 /* */
 /* {% for liens in videos %}*/
+/* */
 /*   <div id="{{ liens.id }}">*/
 /*     <h1>{{ liens.name }}</h1>*/
-/*     de {{ liens.user }} le {{ liens.date|date("d/m/Y") }}<br>*/
-/*     <iframe width="560" height="315" src="{{ liens.url }}" frameborder="0" allowfullscreen></iframe><br>*/
+/*     de <a href="/myVideo/{{ liens.user }}">{{ liens.user }}</a> le {{ liens.date|date("d/m/Y") }}<br>*/
+/*     <a href="/video/{{ liens.id }}">*/
+/*       <figure>*/
+/*         <img src="{{ liens.thumbnail }}" alt="{{ liens.name }}"><br>*/
+/*         <figcaption>{{ liens.description }}</figcaption>*/
+/*       </figure>*/
+/*     </a>*/
+/* */
+/* */
 /*     {% if ((is_granted("IS_AUTHENTICATED_REMEMBERED")) or (is_granted("IS_AUTHENTICATED_FULLY"))) %}*/
 /*       {% if (is_granted('ROLE_ADMIN')) or (( liens.user ) == ( app.user.username )) %}*/
 /*         <form id="delete" method="post">*/
@@ -135,13 +156,8 @@ class __TwigTemplate_bb2b19b5c8aac8bb32a9ded87b56adb5a537c06ef5c70a9287e0a05c2f8
 /*       {% endif %}*/
 /*     {% endif %}*/
 /*   </div><br><br>*/
-/*   {% endfor %}*/
-/* {% if ((is_granted("IS_AUTHENTICATED_REMEMBERED")) or (is_granted("IS_AUTHENTICATED_FULLY"))) %}*/
-/*     <form id="upload" method="post">*/
-/*         <input type="text" name="name"> NAME<br>*/
-/*         <input type="text" name="url"> URL<br>*/
-/*         <input type="submit" name="formVideo" value="Upload">*/
-/*     </form>*/
-/* {% endif %}*/
+/* */
+/* {% endfor %}*/
+/* */
 /* {% endblock %}*/
 /* */

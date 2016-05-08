@@ -83,6 +83,8 @@
   'HamsterHubBundle:Base:index.html.twig' => 'C:\\Users\\Admin\\Documents\\Cours\\LAMP\\GITHUB\\symfony\\HamsterHub\\src\\HamsterHubBundle/Resources/views/Base/index.html.twig',
   'HamsterHubBundle:Base:menu.html.twig' => 'C:\\Users\\Admin\\Documents\\Cours\\LAMP\\GITHUB\\symfony\\HamsterHub\\src\\HamsterHubBundle/Resources/views/Base/menu.html.twig',
   'HamsterHubBundle:Default:index.html.twig' => 'C:\\Users\\Admin\\Documents\\Cours\\LAMP\\GITHUB\\symfony\\HamsterHub\\src\\HamsterHubBundle/Resources/views/Default/index.html.twig',
+  'HamsterHubBundle:Videos:index.html.twig' => 'C:\\Users\\Admin\\Documents\\Cours\\LAMP\\GITHUB\\symfony\\HamsterHub\\src\\HamsterHubBundle/Resources/views/Videos/index.html.twig',
+  'HamsterHubBundle:Videos:myVideo.html.twig' => 'C:\\Users\\Admin\\Documents\\Cours\\LAMP\\GITHUB\\symfony\\HamsterHub\\src\\HamsterHubBundle/Resources/views/Videos/myVideo.html.twig',
   'EntityBundle:Default:index.html.twig' => 'C:\\Users\\Admin\\Documents\\Cours\\LAMP\\GITHUB\\symfony\\HamsterHub\\src\\EntityBundle/Resources/views/Default/index.html.twig',
   'FOSUserBundle:ChangePassword:changePassword.html.twig' => 'C:\\Users\\Admin\\Documents\\Cours\\LAMP\\GITHUB\\symfony\\HamsterHub\\src\\UserBundle/Resources/views/ChangePassword/changePassword.html.twig',
   'FOSUserBundle:ChangePassword:changePassword_content.html.twig' => 'C:\\Users\\Admin\\Documents\\Cours\\LAMP\\GITHUB\\symfony\\HamsterHub\\src\\UserBundle/Resources/views/ChangePassword/changePassword_content.html.twig',

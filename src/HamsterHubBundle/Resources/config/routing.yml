@@ -11,3 +11,9 @@ video_delete:
     path: /video/delete
     defaults:  { _controller: HamsterHubBundle:Video:delete }
     methods: [post]
+show_video:
+      path:     /video/{videoId}
+      defaults: { _controller: HamsterHubBundle:Video:index }
+my_video:
+      path: /myVideo/{userName}
+      defaults: { _controller: HamsterHubBundle:Video:myvideo }

@@ -137,6 +137,16 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
             not_video_delete:
 
+            // show_video
+            if (preg_match('#^/video/(?P<videoId>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'show_video')), array (  '_controller' => 'HamsterHubBundle\\Controller\\VideoController::indexAction',));
+            }
+
+        }
+
+        // my_video
+        if (0 === strpos($pathinfo, '/myVideo') && preg_match('#^/myVideo/(?P<userName>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'my_video')), array (  '_controller' => 'HamsterHubBundle\\Controller\\VideoController::myvideoAction',));
         }
 
         if (0 === strpos($pathinfo, '/log')) {

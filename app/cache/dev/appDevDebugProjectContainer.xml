@@ -535,7 +535,7 @@
       <parameter key="webmaster@example.com">webmaster</parameter>
     </parameter>
     <parameter key="fos_user.registration.confirmation.enabled">false</parameter>
-    <parameter key="fos_user.registration.form.type">FOS\UserBundle\Form\Type\RegistrationFormType</parameter>
+    <parameter key="fos_user.registration.form.type">UserBundle\Form\RegisterType</parameter>
     <parameter key="fos_user.registration.form.name">fos_user_registration_form</parameter>
     <parameter key="fos_user.registration.form.validation_groups" type="collection">
       <parameter>Registration</parameter>
@@ -636,6 +636,9 @@
     </parameter>
   </parameters>
   <services>
+    <service id="app.form.registration" class="UserBundle\Form\RegisterType">
+      <tag name="form.type" alias="app_user_registration"/>
+    </service>
     <service id="controller_name_converter" class="Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser" public="false">
       <tag name="monolog.logger" channel="request"/>
       <argument type="service" id="kernel"/>
@@ -975,6 +978,7 @@
             <argument>C:\Users\Admin\Documents\Cours\LAMP\GITHUB\symfony\HamsterHub\vendor\symfony\symfony\src\Symfony\Component\Security\Core\Exception/../Resources/translations\security.fr.xlf</argument>
             <argument>C:\Users\Admin\Documents\Cours\LAMP\GITHUB\symfony\HamsterHub\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.fr.yml</argument>
             <argument>C:\Users\Admin\Documents\Cours\LAMP\GITHUB\symfony\HamsterHub\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.fr.yml</argument>
+            <argument>C:\Users\Admin\Documents\Cours\LAMP\GITHUB\symfony\HamsterHub\src\UserBundle/Resources/translations\FOSUserBundle.fr.yml</argument>
           </argument>
           <argument key="gl" type="collection">
             <argument>C:\Users\Admin\Documents\Cours\LAMP\GITHUB\symfony\HamsterHub\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.gl.xlf</argument>
@@ -1410,6 +1414,8 @@
           <service class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension" public="false">
             <argument type="service" id="service_container"/>
             <argument type="collection">
+              <argument key="app_user_registration">app.form.registration</argument>
+              <argument key="UserBundle\Form\RegisterType">app.form.registration</argument>
               <argument key="form">form.type.form</argument>
               <argument key="Symfony\Component\Form\Extension\Core\Type\FormType">form.type.form</argument>
               <argument key="birthday">form.type.birthday</argument>
@@ -2188,7 +2194,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>572a756bcb2457.58121172</argument>
+            <argument>572f762605c6f3.87448168</argument>
           </service>
         </argument>
       </argument>
@@ -2489,7 +2495,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>572a756bcb2457.58121172</argument>
+            <argument>572f762605c6f3.87448168</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -3129,7 +3135,7 @@
     <service id="fos_user.registration.form.factory" class="FOS\UserBundle\Form\Factory\FormFactory">
       <argument type="service" id="form.factory"/>
       <argument>fos_user_registration_form</argument>
-      <argument>FOS\UserBundle\Form\Type\RegistrationFormType</argument>
+      <argument>UserBundle\Form\RegisterType</argument>
       <argument type="collection">
         <argument>Registration</argument>
         <argument>Default</argument>

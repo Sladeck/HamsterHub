@@ -2,13 +2,41 @@
     <ul>
        <li class='active'><a href='/'><span>Accueil</span></a></li>
        {% if ((is_granted("IS_AUTHENTICATED_REMEMBERED")) or (is_granted("IS_AUTHENTICATED_FULLY"))) %}
-          <li><a href='/profile'><span>{{app.user.username}}</span></a></li>
-          <li><a><span id="postVids">Poster une vidéo</span></a></li>
-          <li><a href='/logout'><span>Déconnexion</span></a></li>
+          <li><a href='/profile'><span>{{app.user.username}}</span></a>
+            <ul>
+              <li><a href="/profile/edit">Modifier Mon Profil</a></li>
+              <li><a href="/myVideo/{{ app.user.username }}">Mes vidéos</a></li>
+            </ul>
+          </li>
+          <li id="postVids"><a><span>Poster une vidéo</span></a></li>
+          <li class="last"><a href='/logout'><span>Déconnexion</span></a></li>
        {% else %}
-          <li><a><span id="logIn">Connexion</span></a></li>
-          <li><a><span id="register">Inscription</span></a></li>
+          <li id="logIn"><a><span>Connexion</span></a></li>
+          <li id="register" class="last"><a><span>Inscription</span></a></li>
        {% endif %}
-       <li class="last"><a><span><input type="text" name="search" placeholder="Recherche"></span></a></li>
     </ul>
 </nav>
+{% if ((is_granted("IS_AUTHENTICATED_REMEMBERED")) or (is_granted("IS_AUTHENTICATED_FULLY"))) %}
+  <div class="uploadPopUp">
+    <form id="upload" method="post" class="modal-content">
+      <span class="close">x</span>
+        <h1>Mettre un post en ligne : </h1><br>
+        <input type="text" name="name" placeholder="Titre" required><br><br>
+        <input type="text" name="url" placeholder="Url" required><br><br>
+        <input type="text" name="description" placeholder="Description" required><br><br>
+        <input type="submit" name="formVideo" value="OK">
+    </form>
+  </div>
+{% endif %}
+<div class="registerPopUp">
+  <div class="modal-content">
+    <span class="close">x</span>
+    {% render url('fos_user_registration_register') %}
+  </div>
+</div>
+<div class="loginPopUp">
+  <div class="modal-content">
+    <span class="close">x</span>
+    {% render url('fos_user_security_login') %}
+  </div>
+</div>

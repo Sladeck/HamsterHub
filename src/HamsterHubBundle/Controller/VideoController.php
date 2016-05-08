@@ -9,7 +9,17 @@ use Symfony\Component\HttpFoundation\Response;
 use EntityBundle\Entity\Videos;
 use EntityBundle\Entity\User;
 
-class VideoController extends Controller{
+class VideoController extends Controller
+{
+
+  public function indexAction($videoId){
+      $videos = $this->getDoctrine()
+      ->getRepository('EntityBundle:Videos')
+      ->findById($videoId);
+
+
+    return $this->render('HamsterHubBundle:Videos:index.html.twig', array("videos"=> $videos));
+  }
 
   public function uploadAction(Request $info)
   {
@@ -18,6 +28,7 @@ class VideoController extends Controller{
 
     $url = $info->get("url");
     $name = $info->get("name");
+    $description = $info->get("description");
 
     $video->setUrl($url);
     $video->setName($name);
@@ -31,8 +42,7 @@ class VideoController extends Controller{
        $cut1[0] = "https://www.youtube.com/embed/";
        $cut2 = explode("&", $cut1[1]);
        $urlCut = $cut1[0].$cut2[0];
-       var_dump($urlCut);
-
+       $thumbnail = "http://img.youtube.com/vi/".$cut2[0]."/0.jpg";
       if(count($cut2) == 3){
          $urlCut = $cut1[0].$cut2[0]."?".$cut2[2];
        }
@@ -41,6 +51,8 @@ class VideoController extends Controller{
         $urlCut = $cut1[0].$cut2[0]."?".$cut3[0];
       }
        $video->setUrl($urlCut);
+       $video->setThumbnail($thumbnail);
+       $video->setDescription($description);
 
      // 4) save the Video!
      $em = $this->getDoctrine()->getManager();
@@ -52,12 +64,27 @@ class VideoController extends Controller{
 
   }
 
+  public function myvideoAction($userName)
+  {
+    // On recherche l'utilisateur dans la table User
+    $user = $this->getDoctrine()
+      ->getRepository('EntityBundle:User')
+      ->findOneByusername($userName);
+      $user_id = $user->getId();
+    // On recherche l'id utilisateur à partir de l'ID trouvé haut dessus, et on renvois les vidéos
+    $videos = $this->getDoctrine()
+      ->getRepository('EntityBundle:Videos')
+      ->findByuser(array("user_id"=> $user_id), array("id"=>"desc"));
+
+
+  return $this->render('HamsterHubBundle:Videos:myVideo.html.twig', array("user"=>$user, "videos"=>$videos));
+  }
+
 
 
   public function deleteAction(Request $info){
 
     $id = $info->get("id");
-    var_dump($id);
     $em = $this->getDoctrine()->getManager();
     $delete = $em->find('EntityBundle:Videos', $id);
     $em->remove($delete);

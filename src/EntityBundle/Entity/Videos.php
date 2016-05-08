@@ -29,6 +29,16 @@ class Videos
     */
     private $name;
 
+    /**
+     * @var string
+     */
+    private $thumbnail;
+
+    /**
+     * @var string
+     */
+    private $description;
+
 
     /**
      * Get id
@@ -107,6 +117,52 @@ class Videos
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set thumbnail
+     *
+     * @param string $thumbnail
+     * @return Videos
+     */
+    public function setDescription($description)
+    {
+        $this->description= $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set thumbnail
+     *
+     * @param string $thumbnail
+     * @return Videos
+     */
+    public function setThumbnail($thumbnail)
+    {
+        $this->thumbnail = $thumbnail;
+
+        return $this;
+    }
+
+    /**
+     * Get thumbnail
+     *
+     * @return string
+     */
+    public function getThumbnail()
+    {
+        return $this->thumbnail;
     }
 
 

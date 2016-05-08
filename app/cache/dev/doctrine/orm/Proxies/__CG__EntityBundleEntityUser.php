@@ -64,10 +64,10 @@ class User extends \EntityBundle\Entity\User implements \Doctrine\ORM\Proxy\Prox
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', 'id', 'username', 'usernameCanonical', 'email', 'emailCanonical', 'enabled', 'salt', 'password', 'plainPassword', 'lastLogin', 'confirmationToken', 'passwordRequestedAt', 'groups', 'locked', 'expired', 'expiresAt', 'roles', 'credentialsExpired', 'credentialsExpireAt');
+            return array('__isInitialized__', 'id', '' . "\0" . 'EntityBundle\\Entity\\User' . "\0" . 'birthdate', 'username', 'usernameCanonical', 'email', 'emailCanonical', 'enabled', 'salt', 'password', 'plainPassword', 'lastLogin', 'confirmationToken', 'passwordRequestedAt', 'groups', 'locked', 'expired', 'expiresAt', 'roles', 'credentialsExpired', 'credentialsExpireAt');
         }
 
-        return array('__isInitialized__', 'id', 'username', 'usernameCanonical', 'email', 'emailCanonical', 'enabled', 'salt', 'password', 'plainPassword', 'lastLogin', 'confirmationToken', 'passwordRequestedAt', 'groups', 'locked', 'expired', 'expiresAt', 'roles', 'credentialsExpired', 'credentialsExpireAt');
+        return array('__isInitialized__', 'id', '' . "\0" . 'EntityBundle\\Entity\\User' . "\0" . 'birthdate', 'username', 'usernameCanonical', 'email', 'emailCanonical', 'enabled', 'salt', 'password', 'plainPassword', 'lastLogin', 'confirmationToken', 'passwordRequestedAt', 'groups', 'locked', 'expired', 'expiresAt', 'roles', 'credentialsExpired', 'credentialsExpireAt');
     }
 
     /**
@@ -173,6 +173,28 @@ class User extends \EntityBundle\Entity\User implements \Doctrine\ORM\Proxy\Prox
     }
 
     
+    /**
+     * {@inheritDoc}
+     */
+    public function setBirthdate($birthdate)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBirthdate', array($birthdate));
+
+        return parent::setBirthdate($birthdate);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getBirthdate()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBirthdate', array());
+
+        return parent::getBirthdate();
+    }
+
     /**
      * {@inheritDoc}
      */

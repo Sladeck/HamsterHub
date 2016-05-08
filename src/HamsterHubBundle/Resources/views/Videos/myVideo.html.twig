@@ -1,0 +1,25 @@
+{% extends 'HamsterHubBundle:Base:index.html.twig' %}
+
+{% block container %}
+<h1>Vidéos de {{ user.username }}</h1>
+{% for liens in videos %}
+
+  <div id="{{ liens.id }}">
+    <h1>{{ liens.name }}</h1>
+    Enregistré le : {{ liens.date|date("d/m/Y") }}<br>
+    <iframe width="560" height="315" src="{{ liens.url }}" frameborder="0" allowfullscreen></iframe>
+
+
+    {% if ((is_granted("IS_AUTHENTICATED_REMEMBERED")) or (is_granted("IS_AUTHENTICATED_FULLY"))) %}
+      {% if (is_granted('ROLE_ADMIN')) or (( liens.user ) == ( app.user.username )) %}
+        <form id="delete" method="post">
+          <input type="hidden" name="id" value="{{ liens.id }}">
+          <input type="submit" name="delete" value="Supprimer">
+        </form>
+      {% endif %}
+    {% endif %}
+  </div><br><br>
+
+{% endfor %}
+
+{% endblock %}
