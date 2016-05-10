@@ -1,12 +1,11 @@
 {% include 'HamsterHubBundle:Base:head.html.twig' %}
-{% include 'HamsterHubBundle:Base:menu.html.twig' %}
 
 <body>
-  <h1>{% block h1 %}Accueil{% endblock %}</h1>
+  {% include 'HamsterHubBundle:Base:menu.html.twig' %}
   <div class="container">
     {% block container %}
       <span>Texte par défaut</span>
     {% endblock %}
   </div>
+  {% include 'HamsterHubBundle:Base:footer.html.twig' %}
 </body>
-{% include 'HamsterHubBundle:Base:footer.html.twig' %}

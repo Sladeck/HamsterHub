@@ -1,9 +1,43 @@
 {% extends 'HamsterHubBundle:Base:index.html.twig' %}
 
 {% block container %}
-{% for videos in url %}
-  {{ videos.user }}<br>
-  <iframe width="560" height="315" src="{{ videos.url }}" frameborder="0" allowfullscreen></iframe><br>
 
-  {% endfor %}
+{% for liens in videos %}
+
+  <div class="post {{ liens.id }}">
+    <a href="/video/{{ liens.id }}"><div class="titre"><span>{{ liens.name }}</span></div></a>
+
+      <figure>
+        <div class="divIMG">
+        <a href="/video/{{ liens.id }}">
+        <img src="{{ liens.thumbnail }}" alt="{{ liens.name }}"><br>
+        </a>
+        </div>
+        <table class="tab">
+            <tr>
+                <td><label class="user">Posté par </label></td>
+                <td><div class="user-post"><a href="/myVideo/{{ liens.user }}">{{ liens.user }}</a></div></td>
+            </tr>
+            <tr>
+                <td><label class="date">le </label></td>
+                <td><div class="date-post">{{ liens.date|date("d/m/Y") }}</div></td>
+            </tr>
+        </table>
+        <figcaption>{{ liens.description }}</figcaption>
+      </figure>
+
+
+
+    {% if ((is_granted("IS_AUTHENTICATED_REMEMBERED")) or (is_granted("IS_AUTHENTICATED_FULLY"))) %}
+      {% if (is_granted('ROLE_ADMIN')) or (( liens.user ) == ( app.user.username )) %}
+        <form class="delete" method="post">
+          <input type="hidden" name="id" value="{{ liens.id }}">
+          <input type="submit" name="delete" value="Supprimer">
+        </form>
+      {% endif %}
+    {% endif %}
+  </div>
+
+{% endfor %}
+
 {% endblock %}

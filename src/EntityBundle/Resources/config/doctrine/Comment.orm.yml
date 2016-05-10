@@ -1,0 +1,16 @@
+EntityBundle\Entity\Comment:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+
+    manyToOne:
+        thread:
+            targetEntity: EntityBundle\Entity\Thread
+        author:
+            targetEntity: EntityBundle\Entity\User
+
+    lifecycleCallbacks: {  }

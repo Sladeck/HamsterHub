@@ -1,0 +1,20 @@
+@font-face {
+    font-family: Ironick NF;
+    src: url('../fonts/IronickNF.ttf');
+}
+
+@font-face {
+  font-family: Apple Garamond;
+  src: url('../fonts/AppleGaramond.ttf')
+}
+
+$font: 'Ironick NF', sans-serif;
+$fontParas: 'Lesser Concern', sans-serif;
+$title-size: 2rem;
+$description-size: 0.6rem;
+$description-size2: 1.2vw;
+$description-size3: 1.2rem;
+$table-size: 0.6rem;
+$table-size2: 1.2rem;
+$footer-size: 0.8rem;
+$footer-size2: 1.2rem;

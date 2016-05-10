@@ -4,17 +4,20 @@ namespace HamsterHubBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use EntityBundle\Entity\Videos;
+use HamsterHubBundle\Form\UrlType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-      $url = $this->getDoctrine()
+      $videos = $this->getDoctrine()
         ->getRepository('EntityBundle:Videos')
-        ->findAll();
+        ->findby(array(), array('id' => 'desc'));
 
-      return $this->render('HamsterHubBundle:Default:index.html.twig', array("url"=> $url));
 
-      //Pour upload : New videos(); => setuser(getuser()) => persist() => flush();
+      return $this->render('HamsterHubBundle:Default:index.html.twig', array("videos"=> $videos));
+
     }
 }

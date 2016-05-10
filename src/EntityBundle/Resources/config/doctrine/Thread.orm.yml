@@ -1,0 +1,7 @@
+EntityBundle\Entity\Thread:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+    lifecycleCallbacks: {  }

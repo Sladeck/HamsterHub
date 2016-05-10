@@ -14,6 +14,15 @@ EntityBundle\Entity\Videos:
             length: 255
         date:
             type: date
+        name:
+            type: string
+            length: 255
+        thumbnail:
+            type: string
+            length: 255
+        description:
+            type: string
+            length: 255
     manyToOne:
       user:
         targetEntity: User

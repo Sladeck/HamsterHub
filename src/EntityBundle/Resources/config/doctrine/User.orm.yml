@@ -8,4 +8,7 @@ EntityBundle\Entity\User:
             id: true
             generator:
                 strategy: AUTO
+    fields:
+        birthdate:
+            type: date
     lifecycleCallbacks: {  }

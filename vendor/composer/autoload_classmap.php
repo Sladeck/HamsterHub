@@ -6,8 +6,8 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'AppCache' => $baseDir . '/app/AppCache.php',
-    'AppKernel' => $baseDir . '/app/AppKernel.php',
+    'AppCache' => $baseDir . '/../../../../../../documents/cours/lamp/github/symfony/hamsterhub/app/AppCache.php',
+    'AppKernel' => $baseDir . '/../../../../../../documents/cours/lamp/github/symfony/hamsterhub/app/AppKernel.php',
     'ArithmeticError' => $vendorDir . '/symfony/polyfill-php70/Resources/stubs/ArithmeticError.php',
     'AssertionError' => $vendorDir . '/symfony/polyfill-php70/Resources/stubs/AssertionError.php',
     'CallbackFilterIterator' => $vendorDir . '/symfony/polyfill-php54/Resources/stubs/CallbackFilterIterator.php',
