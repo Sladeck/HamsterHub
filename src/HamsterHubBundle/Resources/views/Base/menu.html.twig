@@ -1,21 +1,22 @@
-<nav id='cssmenu'>
-    <ul>
-       <li class='active'><a href='/'><span>Accueil</span></a></li>
-       {% if ((is_granted("IS_AUTHENTICATED_REMEMBERED")) or (is_granted("IS_AUTHENTICATED_FULLY"))) %}
-          <li><a href='/profile'><span>{{app.user.username}}</span></a>
-            <ul>
-              <li><a href="/profile/edit">Modifier Mon Profil</a></li>
-              <li><a href="/myVideo/{{ app.user.username }}">Mes vidéos</a></li>
-            </ul>
-          </li>
-          <li id="postVids"><a><span>Poster une vidéo</span></a></li>
-          <li class="last"><a href='/logout'><span>Déconnexion</span></a></li>
-       {% else %}
-          <li id="logIn"><a><span>Connexion</span></a></li>
-          <li id="register" class="last"><a><span>Inscription</span></a></li>
-       {% endif %}
-    </ul>
-</nav>
+<div id='cssmenu'>
+<ul>
+   <li><a href='/'>Accueil</a></li>
+   {% if ((is_granted("IS_AUTHENTICATED_REMEMBERED")) or (is_granted("IS_AUTHENTICATED_FULLY"))) %}
+   <li class='active'><a href='/profile'>{{ app.user.username }}</a>
+      <ul>
+         <li><a href="/profile/edit">Modifier Mon Profil</a></li>
+         <li><a href="/myVideo/{{ app.user.username }}">Mes vidéos</a></li>
+      </ul>
+   </li>
+   <li id="postVids" ><a>Poster une vidéo</a></li>
+   <li><a href='/logout'>Déconnexion</a></li>
+   {% else %}
+   <li id="logIn"><a>Connexion</a></li>
+   <li id="register" class="last"><a>Inscription</a></li>
+   {% endif %}
+</ul>
+</div>
+
 {% if ((is_granted("IS_AUTHENTICATED_REMEMBERED")) or (is_granted("IS_AUTHENTICATED_FULLY"))) %}
   <div class="uploadPopUp">
     <form id="upload" method="post" class="modal-content">

@@ -614,7 +614,7 @@
     </parameter>
     <parameter key="fos_comment.model.thread.class">EntityBundle\Entity\Thread</parameter>
     <parameter key="fos_comment.model.comment.class">EntityBundle\Entity\Comment</parameter>
-    <parameter key="fos_comment.model.vote.class">FOS\CommentBundle\Entity\Vote</parameter>
+    <parameter key="fos_comment.model.vote.class">EntityBundle\Entity\Vote</parameter>
     <parameter key="fos_comment.manager.thread.default.class">FOS\CommentBundle\Entity\ThreadManager</parameter>
     <parameter key="fos_comment.manager.comment.default.class">FOS\CommentBundle\Entity\CommentManager</parameter>
     <parameter key="fos_comment.manager.vote.default.class">FOS\CommentBundle\Entity\VoteManager</parameter>
@@ -626,6 +626,9 @@
     <parameter key="fos_comment.listener.closed_threads.class">FOS\CommentBundle\EventListener\ClosedThreadListener</parameter>
     <parameter key="fos_comment.sorting_factory.class">FOS\CommentBundle\Sorting\SortingFactory</parameter>
     <parameter key="fos_comment.sorter.date.class">FOS\CommentBundle\Sorting\DateSorting</parameter>
+    <parameter key="fos_comment.manager.thread.acl.class">FOS\CommentBundle\Acl\AclThreadManager</parameter>
+    <parameter key="fos_comment.manager.comment.acl.class">FOS\CommentBundle\Acl\AclCommentManager</parameter>
+    <parameter key="fos_comment.manager.vote.acl.class">FOS\CommentBundle\Acl\AclVoteManager</parameter>
     <parameter key="fos_comment.template.engine">twig</parameter>
     <parameter key="fos_comment.model_manager_name">null</parameter>
     <parameter key="fos_comment.form.comment.type">fos_comment_comment</parameter>
@@ -2452,7 +2455,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>572fbc8e39c540.77575463</argument>
+            <argument>5731f44818fca0.43349562</argument>
           </service>
         </argument>
       </argument>
@@ -2753,7 +2756,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>572fbc8e39c540.77575463</argument>
+            <argument>5731f44818fca0.43349562</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -3021,9 +3024,9 @@
         <argument type="service">
           <service class="FOS\CommentBundle\Twig\CommentExtension" public="false">
             <tag name="twig.extension"/>
-            <argument>null</argument>
-            <argument>null</argument>
-            <argument>null</argument>
+            <argument type="service" id="fos_comment.acl.comment" on-invalid="null"/>
+            <argument type="service" id="fos_comment.acl.vote" on-invalid="null"/>
+            <argument type="service" id="fos_comment.acl.thread" on-invalid="null"/>
           </service>
         </argument>
       </call>
@@ -3591,7 +3594,7 @@
     <service id="fos_comment.manager.vote.default" class="FOS\CommentBundle\Entity\VoteManager">
       <argument type="service" id="debug.event_dispatcher"/>
       <argument type="service" id="fos_comment.entity_manager"/>
-      <argument>FOS\CommentBundle\Entity\Vote</argument>
+      <argument>EntityBundle\Entity\Vote</argument>
     </service>
     <service id="fos_comment.entity_manager" class="Doctrine\ORM\EntityManager" public="false">
       <argument>null</argument>
@@ -3602,7 +3605,7 @@
     </service>
     <service id="fos_comment.listener.thread_counters" class="FOS\CommentBundle\EventListener\ThreadCountersListener">
       <tag name="kernel.event_subscriber"/>
-      <argument type="service" id="fos_comment.manager.comment.default"/>
+      <argument type="service" id="fos_comment.manager.comment"/>
     </service>
     <service id="fos_comment.listener.thread_permalink" class="FOS\CommentBundle\EventListener\ThreadPermalinkListener">
       <tag name="kernel.event_subscriber"/>
@@ -3641,7 +3644,7 @@
     </service>
     <service id="fos_comment.form_type.vote.default" class="FOS\CommentBundle\Form\VoteType">
       <tag name="form.type" alias="fos_comment_vote"/>
-      <argument>FOS\CommentBundle\Entity\Vote</argument>
+      <argument>EntityBundle\Entity\Vote</argument>
     </service>
     <service id="fos_comment.sorting_factory" class="FOS\CommentBundle\Sorting\SortingFactory">
       <argument type="collection">
@@ -4634,6 +4637,30 @@
         <argument type="service" id="service_container"/>
       </call>
     </service>
+    <service id="fos_comment.acl.thread" class="FOS\CommentBundle\Acl\RoleThreadAcl">
+      <argument type="service" id="security.authorization_checker"/>
+      <argument>ROLE_USER</argument>
+      <argument>IS_AUTHENTICATED_FULLY</argument>
+      <argument>ROLE_ADMIN</argument>
+      <argument>ROLE_ADMIN</argument>
+      <argument>EntityBundle\Entity\Thread</argument>
+    </service>
+    <service id="fos_comment.acl.comment" class="FOS\CommentBundle\Acl\RoleCommentAcl">
+      <argument type="service" id="security.authorization_checker"/>
+      <argument>ROLE_USER</argument>
+      <argument>IS_AUTHENTICATED_FULLY</argument>
+      <argument>ROLE_USER</argument>
+      <argument>ROLE_ADMIN</argument>
+      <argument>EntityBundle\Entity\Comment</argument>
+    </service>
+    <service id="fos_comment.acl.vote" class="FOS\CommentBundle\Acl\RoleVoteAcl">
+      <argument type="service" id="security.authorization_checker"/>
+      <argument>ROLE_USER</argument>
+      <argument>IS_AUTHENTICATED_FULLY</argument>
+      <argument>ROLE_ADMIN</argument>
+      <argument>ROLE_USER</argument>
+      <argument>EntityBundle\Entity\Vote</argument>
+    </service>
     <service id="fos_comment.form_factory.comment" class="FOS\CommentBundle\FormFactory\CommentFormFactory">
       <argument type="service" id="form.factory"/>
       <argument>fos_comment_comment</argument>
@@ -4658,6 +4685,20 @@
       <argument type="service" id="form.factory"/>
       <argument>fos_comment_vote</argument>
       <argument>fos_comment_vote</argument>
+    </service>
+    <service id="fos_comment.manager.thread" class="FOS\CommentBundle\Acl\AclThreadManager">
+      <argument type="service" id="fos_comment.manager.thread.default"/>
+      <argument type="service" id="fos_comment.acl.thread"/>
+    </service>
+    <service id="fos_comment.manager.comment" class="FOS\CommentBundle\Acl\AclCommentManager">
+      <argument type="service" id="fos_comment.manager.comment.default"/>
+      <argument type="service" id="fos_comment.acl.comment"/>
+      <argument type="service" id="fos_comment.acl.thread"/>
+    </service>
+    <service id="fos_comment.manager.vote" class="FOS\CommentBundle\Acl\AclVoteManager">
+      <argument type="service" id="fos_comment.manager.vote.default"/>
+      <argument type="service" id="fos_comment.acl.vote"/>
+      <argument type="service" id="fos_comment.acl.comment"/>
     </service>
     <service id="jms_serializer.metadata_driver" class="JMS\Serializer\Metadata\Driver\DoctrineTypeDriver">
       <argument type="service">
@@ -4871,9 +4912,6 @@
     <service id="fos_rest.templating" alias="templating"/>
     <service id="fos_rest.exception_handler" alias="fos_rest.view.exception_wrapper_handler"/>
     <service id="fos_rest.inflector" alias="fos_rest.inflector.doctrine"/>
-    <service id="fos_comment.manager.thread" alias="fos_comment.manager.thread.default"/>
-    <service id="fos_comment.manager.comment" alias="fos_comment.manager.comment.default"/>
-    <service id="fos_comment.manager.vote" alias="fos_comment.manager.vote.default"/>
     <service id="serializer" alias="jms_serializer"/>
     <service id="console.command.sensiolabs_security_command_securitycheckercommand" alias="sensio_distribution.security_checker.command"/>
     <service id="fos_rest.serializer" alias="jms_serializer"/>

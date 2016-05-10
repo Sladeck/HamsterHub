@@ -60,7 +60,16 @@ class VideoController extends Controller
      $em->flush();
      }
 
-     return new Response('Saved new video with id');
+
+      $json = json_encode(Array("day" => $video->getDate()->format('Y-m-d'),
+          "user" => $video->getUser()->getUsername(),
+          "content" => $video->getDescription(),
+          "url" => $thumbnail,
+          "title" => $video->getName(),
+          "id" => $video->getId()
+      ));
+
+      return new Response($json);
 
   }
 
@@ -90,7 +99,9 @@ class VideoController extends Controller
     $em->remove($delete);
     $em->flush();
 
-    return new Response('Video delete');
+    $jsondelete = json_encode(Array("id"=>$id));
+
+    return new Response($jsondelete);
 
   }
 

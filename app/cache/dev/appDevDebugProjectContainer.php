@@ -119,6 +119,9 @@ class appDevDebugProjectContainer extends Container
             'form.type_extension.submit.validator' => 'getForm_TypeExtension_Submit_ValidatorService',
             'form.type_guesser.doctrine' => 'getForm_TypeGuesser_DoctrineService',
             'form.type_guesser.validator' => 'getForm_TypeGuesser_ValidatorService',
+            'fos_comment.acl.comment' => 'getFosComment_Acl_CommentService',
+            'fos_comment.acl.thread' => 'getFosComment_Acl_ThreadService',
+            'fos_comment.acl.vote' => 'getFosComment_Acl_VoteService',
             'fos_comment.entity_manager' => 'getFosComment_EntityManagerService',
             'fos_comment.form_factory.comment' => 'getFosComment_FormFactory_CommentService',
             'fos_comment.form_factory.commentable_thread' => 'getFosComment_FormFactory_CommentableThreadService',
@@ -136,8 +139,11 @@ class appDevDebugProjectContainer extends Container
             'fos_comment.listener.thread_counters' => 'getFosComment_Listener_ThreadCountersService',
             'fos_comment.listener.thread_permalink' => 'getFosComment_Listener_ThreadPermalinkService',
             'fos_comment.listener.vote_blamer' => 'getFosComment_Listener_VoteBlamerService',
+            'fos_comment.manager.comment' => 'getFosComment_Manager_CommentService',
             'fos_comment.manager.comment.default' => 'getFosComment_Manager_Comment_DefaultService',
+            'fos_comment.manager.thread' => 'getFosComment_Manager_ThreadService',
             'fos_comment.manager.thread.default' => 'getFosComment_Manager_Thread_DefaultService',
+            'fos_comment.manager.vote' => 'getFosComment_Manager_VoteService',
             'fos_comment.manager.vote.default' => 'getFosComment_Manager_Vote_DefaultService',
             'fos_comment.sorting_factory' => 'getFosComment_SortingFactoryService',
             'fos_rest.body_listener' => 'getFosRest_BodyListenerService',
@@ -348,9 +354,6 @@ class appDevDebugProjectContainer extends Container
             'doctrine.orm.default_result_cache' => 'doctrine_cache.providers.doctrine.orm.default_result_cache',
             'doctrine.orm.entity_manager' => 'doctrine.orm.default_entity_manager',
             'event_dispatcher' => 'debug.event_dispatcher',
-            'fos_comment.manager.comment' => 'fos_comment.manager.comment.default',
-            'fos_comment.manager.thread' => 'fos_comment.manager.thread.default',
-            'fos_comment.manager.vote' => 'fos_comment.manager.vote.default',
             'fos_rest.exception_handler' => 'fos_rest.view.exception_wrapper_handler',
             'fos_rest.inflector' => 'fos_rest.inflector.doctrine',
             'fos_rest.router' => 'router',
@@ -1524,6 +1527,45 @@ class appDevDebugProjectContainer extends Container
     }
 
     /**
+     * Gets the 'fos_comment.acl.comment' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \FOS\CommentBundle\Acl\RoleCommentAcl A FOS\CommentBundle\Acl\RoleCommentAcl instance.
+     */
+    protected function getFosComment_Acl_CommentService()
+    {
+        return $this->services['fos_comment.acl.comment'] = new \FOS\CommentBundle\Acl\RoleCommentAcl($this->get('security.authorization_checker'), 'ROLE_USER', 'IS_AUTHENTICATED_FULLY', 'ROLE_USER', 'ROLE_ADMIN', 'EntityBundle\\Entity\\Comment');
+    }
+
+    /**
+     * Gets the 'fos_comment.acl.thread' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \FOS\CommentBundle\Acl\RoleThreadAcl A FOS\CommentBundle\Acl\RoleThreadAcl instance.
+     */
+    protected function getFosComment_Acl_ThreadService()
+    {
+        return $this->services['fos_comment.acl.thread'] = new \FOS\CommentBundle\Acl\RoleThreadAcl($this->get('security.authorization_checker'), 'ROLE_USER', 'IS_AUTHENTICATED_FULLY', 'ROLE_ADMIN', 'ROLE_ADMIN', 'EntityBundle\\Entity\\Thread');
+    }
+
+    /**
+     * Gets the 'fos_comment.acl.vote' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \FOS\CommentBundle\Acl\RoleVoteAcl A FOS\CommentBundle\Acl\RoleVoteAcl instance.
+     */
+    protected function getFosComment_Acl_VoteService()
+    {
+        return $this->services['fos_comment.acl.vote'] = new \FOS\CommentBundle\Acl\RoleVoteAcl($this->get('security.authorization_checker'), 'ROLE_USER', 'IS_AUTHENTICATED_FULLY', 'ROLE_ADMIN', 'ROLE_USER', 'EntityBundle\\Entity\\Vote');
+    }
+
+    /**
      * Gets the 'fos_comment.form_factory.comment' service.
      *
      * This service is shared.
@@ -1650,7 +1692,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getFosComment_FormType_Vote_DefaultService()
     {
-        return $this->services['fos_comment.form_type.vote.default'] = new \FOS\CommentBundle\Form\VoteType('FOS\\CommentBundle\\Entity\\Vote');
+        return $this->services['fos_comment.form_type.vote.default'] = new \FOS\CommentBundle\Form\VoteType('EntityBundle\\Entity\\Vote');
     }
 
     /**
@@ -1702,7 +1744,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getFosComment_Listener_ThreadCountersService()
     {
-        return $this->services['fos_comment.listener.thread_counters'] = new \FOS\CommentBundle\EventListener\ThreadCountersListener($this->get('fos_comment.manager.comment.default'));
+        return $this->services['fos_comment.listener.thread_counters'] = new \FOS\CommentBundle\EventListener\ThreadCountersListener($this->get('fos_comment.manager.comment'));
     }
 
     /**
@@ -1732,6 +1774,19 @@ class appDevDebugProjectContainer extends Container
     }
 
     /**
+     * Gets the 'fos_comment.manager.comment' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \FOS\CommentBundle\Acl\AclCommentManager A FOS\CommentBundle\Acl\AclCommentManager instance.
+     */
+    protected function getFosComment_Manager_CommentService()
+    {
+        return $this->services['fos_comment.manager.comment'] = new \FOS\CommentBundle\Acl\AclCommentManager($this->get('fos_comment.manager.comment.default'), $this->get('fos_comment.acl.comment'), $this->get('fos_comment.acl.thread'));
+    }
+
+    /**
      * Gets the 'fos_comment.manager.comment.default' service.
      *
      * This service is shared.
@@ -1742,6 +1797,19 @@ class appDevDebugProjectContainer extends Container
     protected function getFosComment_Manager_Comment_DefaultService()
     {
         return $this->services['fos_comment.manager.comment.default'] = new \FOS\CommentBundle\Entity\CommentManager($this->get('debug.event_dispatcher'), $this->get('fos_comment.sorting_factory'), $this->get('fos_comment.entity_manager'), 'EntityBundle\\Entity\\Comment');
+    }
+
+    /**
+     * Gets the 'fos_comment.manager.thread' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \FOS\CommentBundle\Acl\AclThreadManager A FOS\CommentBundle\Acl\AclThreadManager instance.
+     */
+    protected function getFosComment_Manager_ThreadService()
+    {
+        return $this->services['fos_comment.manager.thread'] = new \FOS\CommentBundle\Acl\AclThreadManager($this->get('fos_comment.manager.thread.default'), $this->get('fos_comment.acl.thread'));
     }
 
     /**
@@ -1758,6 +1826,19 @@ class appDevDebugProjectContainer extends Container
     }
 
     /**
+     * Gets the 'fos_comment.manager.vote' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \FOS\CommentBundle\Acl\AclVoteManager A FOS\CommentBundle\Acl\AclVoteManager instance.
+     */
+    protected function getFosComment_Manager_VoteService()
+    {
+        return $this->services['fos_comment.manager.vote'] = new \FOS\CommentBundle\Acl\AclVoteManager($this->get('fos_comment.manager.vote.default'), $this->get('fos_comment.acl.vote'), $this->get('fos_comment.acl.comment'));
+    }
+
+    /**
      * Gets the 'fos_comment.manager.vote.default' service.
      *
      * This service is shared.
@@ -1767,7 +1848,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getFosComment_Manager_Vote_DefaultService()
     {
-        return $this->services['fos_comment.manager.vote.default'] = new \FOS\CommentBundle\Entity\VoteManager($this->get('debug.event_dispatcher'), $this->get('fos_comment.entity_manager'), 'FOS\\CommentBundle\\Entity\\Vote');
+        return $this->services['fos_comment.manager.vote.default'] = new \FOS\CommentBundle\Entity\VoteManager($this->get('debug.event_dispatcher'), $this->get('fos_comment.entity_manager'), 'EntityBundle\\Entity\\Vote');
     }
 
     /**
@@ -3322,7 +3403,7 @@ class appDevDebugProjectContainer extends Container
         $o = new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler($e, $l, array(), $a);
         $o->setOptions(array('login_path' => '/login', 'failure_path' => NULL, 'failure_forward' => false, 'failure_path_parameter' => '_failure_path'));
 
-        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($k, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => new \Symfony\Component\Security\Core\User\InMemoryUserProvider(), 1 => $this->get('fos_user.user_provider.username')), 'main', $a, $c), 2 => $m, 3 => new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $f, $this->get('security.authentication.session_strategy'), $l, 'main', $n, $o, array('check_path' => '/login_check', 'use_forward' => false, 'require_previous_session' => true, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'csrf_token_id' => 'authenticate', 'post_only' => true), $a, $c, $this->get('security.csrf.token_manager')), 4 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '572fbc8e39c540.77575463', $a, $f), 5 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $k, $f)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), $l, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($e, $l, '/login', false), NULL, NULL, $a, false));
+        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($k, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => new \Symfony\Component\Security\Core\User\InMemoryUserProvider(), 1 => $this->get('fos_user.user_provider.username')), 'main', $a, $c), 2 => $m, 3 => new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $f, $this->get('security.authentication.session_strategy'), $l, 'main', $n, $o, array('check_path' => '/login_check', 'use_forward' => false, 'require_previous_session' => true, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'csrf_token_id' => 'authenticate', 'post_only' => true), $a, $c, $this->get('security.csrf.token_manager')), 4 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '5731f44818fca0.43349562', $a, $f), 5 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $k, $f)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), $l, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($e, $l, '/login', false), NULL, NULL, $a, false));
     }
 
     /**
@@ -4308,7 +4389,7 @@ class appDevDebugProjectContainer extends Container
         $instance->addExtension(new \Symfony\Bridge\Twig\Extension\FormExtension(new \Symfony\Bridge\Twig\Form\TwigRenderer(new \Symfony\Bridge\Twig\Form\TwigRendererEngine(array(0 => 'form_div_layout.html.twig')), $this->get('security.csrf.token_manager', ContainerInterface::NULL_ON_INVALID_REFERENCE))));
         $instance->addExtension(new \Twig_Extension_Debug());
         $instance->addExtension(new \Doctrine\Bundle\DoctrineBundle\Twig\DoctrineExtension());
-        $instance->addExtension(new \FOS\CommentBundle\Twig\CommentExtension(NULL, NULL, NULL));
+        $instance->addExtension(new \FOS\CommentBundle\Twig\CommentExtension($this->get('fos_comment.acl.comment', ContainerInterface::NULL_ON_INVALID_REFERENCE), $this->get('fos_comment.acl.vote', ContainerInterface::NULL_ON_INVALID_REFERENCE), $this->get('fos_comment.acl.thread', ContainerInterface::NULL_ON_INVALID_REFERENCE)));
         $instance->addExtension(new \JMS\Serializer\Twig\SerializerExtension($this->get('jms_serializer')));
         $instance->addExtension(new \Symfony\Bundle\AsseticBundle\Twig\AsseticExtension($this->get('assetic.asset_factory'), $this->get('templating.name_parser'), true, array(), array(0 => 'FOSCommentBundle'), new \Symfony\Bundle\AsseticBundle\DefaultValueSupplier($this)));
         $instance->addExtension(new \Symfony\Bridge\Twig\Extension\DumpExtension($this->get('var_dumper.cloner')));
@@ -4734,7 +4815,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getSecurity_Authentication_ManagerService()
     {
-        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_provider.username'), $this->get('security.user_checker.main'), 'main', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('572fbc8e39c540.77575463')), true);
+        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_provider.username'), $this->get('security.user_checker.main'), 'main', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('5731f44818fca0.43349562')), true);
 
         $instance->setEventDispatcher($this->get('debug.event_dispatcher'));
 
@@ -5543,7 +5624,7 @@ class appDevDebugProjectContainer extends Container
             ),
             'fos_comment.model.thread.class' => 'EntityBundle\\Entity\\Thread',
             'fos_comment.model.comment.class' => 'EntityBundle\\Entity\\Comment',
-            'fos_comment.model.vote.class' => 'FOS\\CommentBundle\\Entity\\Vote',
+            'fos_comment.model.vote.class' => 'EntityBundle\\Entity\\Vote',
             'fos_comment.manager.thread.default.class' => 'FOS\\CommentBundle\\Entity\\ThreadManager',
             'fos_comment.manager.comment.default.class' => 'FOS\\CommentBundle\\Entity\\CommentManager',
             'fos_comment.manager.vote.default.class' => 'FOS\\CommentBundle\\Entity\\VoteManager',
@@ -5555,6 +5636,9 @@ class appDevDebugProjectContainer extends Container
             'fos_comment.listener.closed_threads.class' => 'FOS\\CommentBundle\\EventListener\\ClosedThreadListener',
             'fos_comment.sorting_factory.class' => 'FOS\\CommentBundle\\Sorting\\SortingFactory',
             'fos_comment.sorter.date.class' => 'FOS\\CommentBundle\\Sorting\\DateSorting',
+            'fos_comment.manager.thread.acl.class' => 'FOS\\CommentBundle\\Acl\\AclThreadManager',
+            'fos_comment.manager.comment.acl.class' => 'FOS\\CommentBundle\\Acl\\AclCommentManager',
+            'fos_comment.manager.vote.acl.class' => 'FOS\\CommentBundle\\Acl\\AclVoteManager',
             'fos_comment.template.engine' => 'twig',
             'fos_comment.model_manager_name' => NULL,
             'fos_comment.form.comment.type' => 'fos_comment_comment',
